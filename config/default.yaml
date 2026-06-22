@@ -1,0 +1,64 @@
+# ======================================================================
+# Default Training Configuration
+# ======================================================================
+
+# --- Data Configuration ---
+data:
+  dataset_path: ./data/stnet    # Path to ST dataset (e.g., stnet, her2st, skin)
+  feature_path: ./uni_features  # Path to the UNI features
+  batch_size: 1                 # Slide-level batch size (must be 1)
+  num_workers: 4
+  folds: 8                      # Number of folds for cross-validation (same as MERGE)
+
+# --- General Configuration ---
+general:
+  seed: 3927                    # random seed for reproducibility (same as MERGE)
+  output_dir: ./output_dir
+
+# --- Model Configuration ---
+model:
+  input_dim: 1536
+  embed_dim: 768
+  num_genes: 250
+  visible_ratio: 0.1
+  joint_depth: 3
+  num_heads: 8
+  mlp_ratio: 2.0
+  attn_dropout: 0.1
+  proj_dropout: 0.1
+  ffn_activation: "swiglu"
+  contrastive_dim: 384
+  decoder_depth: 2
+  norm_type: "rms"
+  region_based_sampling: true
+  num_regions: 3
+  sampler_type: "adaptive"
+
+# --- Loss Configuration ---
+loss:
+  recon_weight: 1.0
+  pcc_weight: 0.5
+  sample_weight: 1e-3
+  contrast_weight: 0.05
+  contrast_temp: 1.0          
+  contrastive_type: "soft"    
+  
+  # Bio-Salience Sampling Loss
+  bio_salience_method: "scale_aware_ranking"  
+  bio_salience_beta: 1.5     
+
+# --- Training Configuration ---
+training:
+  epoch: 1000
+  patience: 200
+  lr: 2e-4
+  weight_decay: 5e-2
+  grad_accum_steps: 1
+  warmup_epochs: 100
+  clip_grad: null
+  mixed_precision: "no"  # "no" for fp32, "fp16" for mixed precision
+
+# --- WandB Configuration ---
+wandb:
+  project_name: null
+  run_name: CAMMST
