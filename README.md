@@ -14,7 +14,7 @@
   </p>
 </p>
 <p align="center">
-    <!-- <a href="https://arxiv.org/abs/2603.25247"><img alt='arXiv' src="https://img.shields.io/badge/arXiv-2603.25247-b31b1b.svg"></a> -->
+    <a href="https://arxiv.org/abs/2606.21156"><img alt='arXiv' src="https://img.shields.io/badge/arXiv-2606.21156-b31b1b.svg"></a>
 </p>
  
 <be>
@@ -136,3 +136,16 @@ Key options in `config/default.yaml`:
 - **loss:** reconstruction (prediction), PCC, sampling, and contrastive loss weights
 
 Override any value with `--set key.subkey=value` when calling `main.py`.
+
+## Citation
+
+If you found this code useful, please cite the following paper:
+
+```bibtex
+@article{cammst2026,
+  title={Contrastive and Adaptive Multi-modal Masked Autoencoder for Spatial Transcriptomics},
+  author={Kim, Joohyeok and Jeong, Taejin and Kim, Jinyeong and Hwang, Seong Jae},
+  journal={arXiv preprint arXiv:2606.21156},
+  year={2026}
+}
+```
